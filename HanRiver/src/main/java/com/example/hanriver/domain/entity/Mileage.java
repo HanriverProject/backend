@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class Mileage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long mileage_id;
+    private Long id;
 
-    private Long mileage_amount;
+    private Long amount;
 
 }

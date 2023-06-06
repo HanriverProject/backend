@@ -1,1 +1,55 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 102924023000-hihm5kjgp4je1f28rk1n4vindfadv6i4.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile, email
+          kakao:
+            authorization-grant-type: authorization_code
+            client-id: 31c9880a2b42d624d7fe6c99c36782a0
+            client-secret: 5LVfP440Rqo4y8JrlIocRF8inYXFsF5c
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            scope:
+              - profile_nickname
+              - account_email
+            client-authentication-method: POST
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hanriver?serverTimezone=Asia/Seoul
+    username: root
+    password: root
 
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+        hibernate:
+          format_sql: true
+
+
+jwt:
+  secretKey: secretkey
+
+  access:
+    expiration: 1000
+    header: Authorization
+
+  refresh:
+    expiration: 1000
+    header: Authorization-refresh
